@@ -1,5 +1,6 @@
 #include <iostream>
 
+
 template < typename T >
 void Print(T object, bool flush = false) {
     std::cout << object;

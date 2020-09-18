@@ -1,10 +1,11 @@
+#include <cstring>
+#include <fstream>
+
 #include "Environment.hpp"
 
 #include "_defines.h"
 #include "_instructions.hpp"
 
-#include <cstring>
-#include <fstream>
 
 int main(const int argc, const char** argv) {
     using namespace Warlokbytes;
