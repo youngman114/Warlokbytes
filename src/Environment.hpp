@@ -57,5 +57,7 @@ namespace Warlokbytes {
         }
 
         Environment(const byte* const code, const std::map<byte, instruction> ops) : code(code), ops(ops) {}
+        Environment(const Environment& other) = delete;
+        Environment& operator=(const Environment& other) = delete;
     };
 }
