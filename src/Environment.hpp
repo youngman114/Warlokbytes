@@ -7,7 +7,7 @@
 
 #include "_defines.h"
 
-#include "Streams.hpp"
+#include "Logger.hpp"
 
 #define INSTRUCTION(OP, CODE) {OP, [](Environment* env) -> byte {CODE; return 0x00;}},
 namespace Warlokbytes {
@@ -36,7 +36,8 @@ namespace Warlokbytes {
             if(Environment::instruction operation = this->ops.operator[](fetched)) {
                 this->state = operation(this);
             } else { // undefined function, do something!!
-
+                Error("Undefined function ");
+                Halt(); 
             }
         }
         
