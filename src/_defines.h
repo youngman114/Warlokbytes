@@ -10,5 +10,6 @@ typedef u32 ptr;
 
 #define PASS 0x00
 #define HALT 0xFF
+#define PUSH 0x10
 
 #define STATE_HALT 0x11
