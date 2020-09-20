@@ -5,6 +5,9 @@
 
 #define NEXT env->code[++(env->counter)]
 
+#define Push(x) env->bstack.Push(x)
+#define Pop() env->bstack.Pop();
+
 namespace Warlokbytes {
     namespace Hardcoded {
         const std::map<byte, Environment::instruction> ops = {
@@ -12,15 +15,25 @@ namespace Warlokbytes {
                 Log("PASSED")
             )
             INSTRUCTION(HALT, {
-                byte exit = env->bstack.Peek();
+                byte exit = Pop();
                 env->Halt();
-                Log("HALTED");
                 return exit;
+                Log("HALTED");
             })
             INSTRUCTION(PUSH, {
                 byte val = NEXT;
+                Push(val);
                 Log("PUSHED");
-                env->bstack.Push(val);
+            })
+            INSTRUCTION(ADD, {
+                byte a = Pop();
+                byte b = Pop();
+                Push(a + b);
+            })
+            INSTRUCTION(SUB, {
+                byte a = Pop();
+                byte b = Pop();
+                Push(a - b);
             })
         };
     }
