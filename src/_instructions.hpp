@@ -12,10 +12,10 @@ namespace Warlokbytes {
                 Log("PASSED")
             )
             INSTRUCTION(HALT, {
-                byte exit = NEXT;
+                byte exit = env->bstack.Peek();
                 env->Halt();
                 Log("HALTED");
-                return NEXT;
+                return exit;
             })
             INSTRUCTION(PUSH, {
                 byte val = NEXT;
