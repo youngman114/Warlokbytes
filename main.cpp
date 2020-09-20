@@ -31,7 +31,7 @@ int main(const int argc, const char** argv) {
     }
 
     const std::map<byte, Environment::instruction> ops = Hardcoded::ops;
-    Environment* env = new Environment {code, ops};
+    Environment* env = new Environment {code, ops, 16};
 
     while(env->IsRunning()) {
         env->Step();
