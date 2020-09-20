@@ -26,11 +26,15 @@ namespace Warlokbytes {
         }
 
         ByteStack(std::size_t size) {
+            this->size = size;
+            this->counter = -1;
             data = new byte[size];
         }
 
         ~ByteStack() {
-            delete[] data;
+            for (int i = 0; i < size; i++) {
+                delete (byte*)((std::size_t)(data) + i);
+            }
         }
     };
 }
