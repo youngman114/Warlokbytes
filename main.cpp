@@ -3,17 +3,14 @@
 
 #include "src/Environment.hpp"
 
-#include "_defines.h"
-#include "_instructions.hpp"
+#include "src/_defines.h"
+#include "src/_instructions.hpp"
 
 
 int main(const int argc, const char** argv) {
     using namespace Warlokbytes;
 
-    byte* code = new byte[2] {
-        HALT,
-        0x07
-    };
+    byte* code = nullptr;
 
     if(argc > 1) {
         /* https://stackoverflow.com/questions/18816126/c-read-the-whole-file-in-buffer */
