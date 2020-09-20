@@ -35,3 +35,8 @@
 .vs
 .vscode
 .idea
+
+# Visual Studio files
+Debug/
+*.sln
+*.vcxproj*
