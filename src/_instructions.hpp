@@ -6,7 +6,7 @@
 #define NEXT env->code[++(env->counter)]
 
 #define Push(x) env->bstack.Push(x)
-#define Pop() env->bstack.Pop();
+#define Pop() env->bstack.Pop()
 
 namespace Warlokbytes {
     namespace Hardcoded {
@@ -34,6 +34,16 @@ namespace Warlokbytes {
                 byte a = Pop();
                 byte b = Pop();
                 Push(a - b);
+            })
+            INSTRUCTION(PUSHN, {
+                while(char current = NEXT) {
+                    Push(current);
+                }
+            })
+            INSTRUCTION(PRINT, {
+                while(char current = Pop()) {
+                    std::cout << current;
+                }
             })
         };
     }

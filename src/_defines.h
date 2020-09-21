@@ -11,10 +11,14 @@ typedef u32 ptr;
 /* BASIC INSTRUCTIONS*/
 // Do nothing
 #define PASS 0x00
+// Print NULL terminated string from stack
+#define PRINT 0x01
 
 /* STACK INSTRUCTIONS */
 // But next byte onto the stack
 #define PUSH 0x10
+// Push NULL terminated string onto the stack
+#define PUSHN 0x11
 
 /* ARITHMETIC INSTRUCTIONS */
 // Add two numbers at stack and push result back
