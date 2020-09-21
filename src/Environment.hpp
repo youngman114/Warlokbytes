@@ -38,7 +38,9 @@ namespace Warlokbytes {
             if(Environment::instruction operation = this->ops.operator[](fetched)) {
                 this->state = operation(this);
             } else { // undefined function, do something!!
-                Error("Undefined function ");
+                Error("Undefined function 0x", false);
+                Error(std::hex, false);
+                Error((int)fetched);
                 Halt(); 
             }
         }
