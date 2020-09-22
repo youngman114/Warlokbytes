@@ -36,6 +36,8 @@ namespace Warlokbytes {
                 Push(a - b);
             })
             INSTRUCTION(PUSHN, {
+                Log("PUSHED NULL TERMINATED");
+                Push(0x00); // Push null terminator for the string
                 while(char current = NEXT) {
                     Push(current);
                 }
