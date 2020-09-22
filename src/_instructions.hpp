@@ -12,18 +12,15 @@ namespace Warlokbytes {
     namespace Hardcoded {
         const std::map<byte, Environment::instruction> ops = {
             INSTRUCTION(PASS, 
-                Log("PASSED")
             )
             INSTRUCTION(HALT, {
                 byte exit = Pop();
                 env->Halt();
                 return exit;
-                Log("HALTED");
             })
             INSTRUCTION(PUSHB, {
                 byte val = NEXT;
                 Push(val);
-                Log("PUSHED");
             })
             INSTRUCTION(ADD, {
                 byte a = Pop();
@@ -36,7 +33,6 @@ namespace Warlokbytes {
                 Push(a - b);
             })
             INSTRUCTION(PUSHN, {
-                Log("PUSHED NULL TERMINATED");
                 Push(0x00); // Push null terminator for the string
                 while(char current = NEXT) {
                     Push(current);
