@@ -16,7 +16,7 @@ typedef u32 ptr;
 
 /* STACK INSTRUCTIONS */
 // But next byte onto the stack
-#define PUSH 0x10
+#define PUSHB 0x10
 // Push NULL terminated string onto the stack
 #define PUSHN 0x11
 

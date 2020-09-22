@@ -20,7 +20,7 @@ namespace Warlokbytes {
                 return exit;
                 Log("HALTED");
             })
-            INSTRUCTION(PUSH, {
+            INSTRUCTION(PUSHB, {
                 byte val = NEXT;
                 Push(val);
                 Log("PUSHED");
