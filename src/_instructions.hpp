@@ -10,39 +10,39 @@
 
 namespace Warlokbytes {
     namespace Hardcoded {
-        const std::map<byte, Environment::Instruction> ops = {
-            INSTRUCTION(PASS, "PASS",
+        const std::map<byte, Environment::instruction> ops = {
+            INSTRUCTION(PASS, 
                 Log("PASSED")
             )
-            INSTRUCTION(HALT, "HALT", {
+            INSTRUCTION(HALT, {
                 byte exit = Pop();
                 env->Halt();
                 return exit;
                 Log("HALTED");
             })
-            INSTRUCTION(PUSHB, "PUSHB", {
+            INSTRUCTION(PUSHB, {
                 byte val = NEXT;
                 Push(val);
                 Log("PUSHED");
             })
-            INSTRUCTION(ADD, "ADD", {
+            INSTRUCTION(ADD, {
                 byte a = Pop();
                 byte b = Pop();
                 Push(a + b);
             })
-            INSTRUCTION(SUB, "SUB", {
+            INSTRUCTION(SUB, {
                 byte a = Pop();
                 byte b = Pop();
                 Push(a - b);
             })
-            INSTRUCTION(PUSHN, "PUSHN", {
+            INSTRUCTION(PUSHN, {
                 Log("PUSHED NULL TERMINATED");
                 Push(0x00); // Push null terminator for the string
                 while(char current = NEXT) {
                     Push(current);
                 }
             })
-            INSTRUCTION(PRINT, "PRINT", {
+            INSTRUCTION(PRINT, {
                 while(char current = Pop()) {
                     std::cout << current;
                 }
