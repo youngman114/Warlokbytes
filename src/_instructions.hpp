@@ -3,14 +3,15 @@
 #include "src/Environment.hpp"
 #include "_defines.h"   
 
-#define NEXT env->code[++(env->counter)]
+#define NEXT env->GetCode()[++(env->GetCounter())]
 
-#define Push(x) env->bstack.Push(x)
-#define Pop() env->bstack.Pop()
+#define Push(x) env->GetByteStack().Push(x)
+#define Pop() env->GetByteStack().Pop()
+#define INSTRUCTION(OP, CODE)  {OP, Warlokbytes::Instruction([](Environment* env) -> byte {CODE; return 0x00;})},
 
 namespace Warlokbytes {
     namespace Hardcoded {
-        const std::map<byte, Environment::instruction> ops = {
+        const std::map<byte, Instruction> ops = {
             INSTRUCTION(PASS, 
             )
             INSTRUCTION(HALT, {
