@@ -12,11 +12,13 @@
 
 namespace Warlokbytes {
     typedef class Environment;
-    typedef byte(*instruction)(Environment* env);
 
     struct Instruction
     {
         friend Environment;
+
+    private:
+        typedef byte(*instruction)(Environment* env);
 
     public:
         instruction op;
@@ -30,7 +32,6 @@ namespace Warlokbytes {
      */
     class Environment {
         friend Instruction;
-        friend instruction;
 
     private:
         /// Displays code counter
