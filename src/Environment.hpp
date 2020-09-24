@@ -8,7 +8,6 @@
 #include "_defines.h"
 
 #include "Logger.hpp"
-#include "ByteStack.hpp"
 
 namespace Warlokbytes {
     typedef class Environment;
@@ -45,7 +44,7 @@ namespace Warlokbytes {
         /// State based on the last operation
         byte state = 0;
         // Bitwise stack
-        ByteStack bstack = 0;
+        std::vector<byte> bstack;
 
     public:
         /// Fetch, decode and execute the next instruction
@@ -76,7 +75,7 @@ namespace Warlokbytes {
             return this->isRunning;
         }
 
-        ByteStack& GetByteStack() {
+        std::vector<byte>& GetByteStack() {
             return this->bstack;
         }
 
