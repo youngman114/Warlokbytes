@@ -5,8 +5,8 @@
 
 #define NEXT env->GetCode()[++(env->GetCounter())]
 
-#define Push(x) env->GetByteStack().push_back(x)
-#define Pop() env->GetByteStack().back(); env->GetByteStack().pop_back()
+#define Push(x) env->currStack.push_back(x)
+#define Pop() env->currStack.back(); env->currStack.pop_back()
 #define INSTRUCTION(OP, CODE)  {OP, Warlokbytes::Instruction([](Environment* env) -> byte {CODE; return 0x00;})},
 
 namespace Warlokbytes {

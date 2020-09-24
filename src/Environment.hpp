@@ -4,10 +4,12 @@
 #include <string>
 #include <vector>
 #include <cstring>
+#include <memory>
 
 #include "_defines.h"
 
 #include "Logger.hpp"
+#include "FrameStack.hpp"
 
 namespace Warlokbytes {
     typedef class Environment;
@@ -43,8 +45,9 @@ namespace Warlokbytes {
         std::map<byte, Instruction> ops = {};
         /// State based on the last operation
         byte state = 0;
-        // Bitwise stack
-        std::vector<byte> bstack;
+        FrameStack callstack;
+
+
 
     public:
         /// Fetch, decode and execute the next instruction
@@ -75,8 +78,8 @@ namespace Warlokbytes {
             return this->isRunning;
         }
 
-        std::vector<byte>& GetByteStack() {
-            return this->bstack;
+        FrameStack& GetCallStack() {
+            return this->callstack;
         }
 
         const byte GetState() const {
@@ -91,7 +94,11 @@ namespace Warlokbytes {
             return this->counter;
         }
 
-        Environment(const byte* const code, const std::map<byte, Instruction> ops, std::size_t stackSize) : code(code), ops(ops), bstack(stackSize) {}
+        std::vector<byte> currLocals {GetCallStack().back().locals};
+        std::vector<byte> currStack {GetCallStack().back().stack};
+        Frame currFrame {GetCallStack().back()};
+
+        Environment(const byte* const code, const std::map<byte, Instruction> ops, std::size_t stackSize) : code(code), ops(ops), callstack(1) {}
         Environment(const Environment& other) = delete;
         Environment& operator=(const Environment& other) = delete;
     };
