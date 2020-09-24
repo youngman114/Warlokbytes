@@ -44,6 +44,16 @@ namespace Warlokbytes {
                     std::cout << current;
                 }
             })
+            INSTRUCTION(MUL, {
+                byte a = Pop();
+                byte b = Pop();
+                Push(a * b);
+            })
+            INSTRUCTION(DIV, {
+                byte a = Pop();
+                byte b = Pop();
+                Push(a / b);
+            })
         };
     }
 }

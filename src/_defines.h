@@ -25,6 +25,10 @@ typedef u32 ptr;
 #define ADD 0x20
 // Subtract two numbers at stack and push result back
 #define SUB 0x21
+// Multiply two numbers at the stack
+#define MUL 0x22
+// Divide two numbers
+#define DIV 0x23
 
 /* MISC INSTRUCTIONS */
 // End the program execution with TOS exit code
