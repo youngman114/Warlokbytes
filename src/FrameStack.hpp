@@ -9,7 +9,7 @@ namespace Warlokbytes {
         std::vector<byte> stack;
         std::vector<byte> locals;
         
-        Frame() : stack(0), locals(0) {}
+        Frame(u32 sstack = 0, u32 slocals = 0) : stack(sstack), locals(slocals) {}
     };
 
     typedef std::vector<Frame> FrameStack;
