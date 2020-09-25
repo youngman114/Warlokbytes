@@ -22,3 +22,7 @@
 | LLOADB      | 0xA0               | -> byte            | Push local byte from addr arg1:LEB128(u32)                                                            |       F      |
 | LSTOREB     | 0xA1               | byte ->            | Store popped TOS at local arg1:LEB128(u32)                                                            |       F      |
 | HALT        | 0xFF               | byte ->            | Exit program with TOS as exit code                                                                    |       T      |
+
+*TOS - Top Of Stack
+*argN:u32 - binary op argument with size of 32 bits
+*argN:LEB128(u32) - binary op argument encoded with LEB128
