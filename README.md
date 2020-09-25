@@ -1,7 +1,7 @@
 # Warlokbytes
 ![GitHub last commit](https://img.shields.io/github/last-commit/youngman114/Warlokbytes) ![GitHub commit activity](https://img.shields.io/github/commit-activity/m/youngman114/Warlokbytes) ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/youngman114/Warlokbytes) ![GitHub license](https://img.shields.io/github/license/youngman114/Warlokbytes)
 
-    Warlokbytes is an interpreter for bytecode language under the same name, created to protect people from learning Pascal.
+Warlokbytes is an interpreter for bytecode language under the same name, created to protect people from learning Pascal.
 
 
 ## Usage
