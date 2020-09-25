@@ -10,7 +10,7 @@
 int main(const int argc, const char** argv) {
     using namespace Warlokbytes;
 
-    byte* code = nullptr;
+    std::vector<byte> code = {};
 
     if(argc > 1) {
         /* https://stackoverflow.com/questions/18816126/c-read-the-whole-file-in-buffer */
@@ -20,11 +20,10 @@ int main(const int argc, const char** argv) {
             Error("Couldn't open \"" + std::string(argv[1]) + "\"");
             return 1;
         }
-        auto size = file.tellg(); // Record eof position
+        std::size_t size = file.tellg(); // Record eof position
+        code.resize(size);
         file.seekg(0, std::ios::beg); // Revert to the beginning
-        // Clear code ptr, pretty sure there is  more elegant solution
-        delete code; code = new byte[size]; 
-        file.read((char*)code, size);
+        file.read((char*)(code.data()), size);
     } else {
         Error("No files to execute.");
         return 1;

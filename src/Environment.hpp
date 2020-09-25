@@ -38,14 +38,14 @@ namespace Warlokbytes {
         /// Displays code counter
         unsigned long long counter = -1;
         /// All the executable code
-        mutable byte const* code = nullptr;
+        mutable std::vector<byte> code = {0xFF};
         /// Is machine currently running? 
         bool isRunning = true;
         /// Instructions and their method
         std::map<byte, Instruction> ops = {};
         /// State based on the last operation
         byte state = 0;
-        FrameStack callstack;
+        FrameStack callstack = {};
 
 
 
@@ -63,10 +63,6 @@ namespace Warlokbytes {
             }
         }
         
-        Environment(const std::initializer_list<byte> code, const std::map<byte, Instruction> ops)  {
-            memcpy((void*)this->code, code.begin(), code.size());
-            this->ops = ops;
-        }
 
         /// Set isRunning to "false"
         void Halt() {
@@ -86,7 +82,7 @@ namespace Warlokbytes {
             return this->state;
         }
 
-        const byte* const & GetCode() {
+        const std::vector<byte>& GetCode() {
             return this->code;
         }
 
@@ -98,7 +94,8 @@ namespace Warlokbytes {
         std::vector<byte> currStack {GetCallStack().back().stack};
         Frame currFrame {GetCallStack().back()};
 
-        Environment(const byte* const code, const std::map<byte, Instruction> ops, std::size_t stackSize) : code(code), ops(ops), callstack(1) {}
+        Environment(const std::vector<byte> code, const std::map<byte, Instruction> ops) : code(code), ops(ops), callstack(1) {}
+        Environment(const std::vector<byte> code, const std::map<byte, Instruction> ops, std::size_t stackSize) : code(code), ops(ops), callstack(1) {}
         Environment(const Environment& other) = delete;
         Environment& operator=(const Environment& other) = delete;
     };
