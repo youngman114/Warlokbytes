@@ -30,11 +30,6 @@ Want to contribute? Great!
 Project is open to contributions, so feel free to pull request, fork and issue
 If you want to extend Warlokbytes, start by reverse engineering Environment class
 
-## Authors
-
-[youngman114](github.com/youngman114)
-
-
 ## License
 Distributed under [LICENSE](LICENSE)
 
