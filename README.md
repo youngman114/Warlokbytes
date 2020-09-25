@@ -6,7 +6,7 @@ Warlokbytes is an interpreter for bytecode language under the same name, created
 
 ## Usage
 
-1. Download source files.
+1. Download source files
 2. Compile main.cpp for your operating system (e.g. ```g++ main.cpp -I .```)
 3. Read the [docs](#documentation)
 4. Provide command line filepaths to some samples
