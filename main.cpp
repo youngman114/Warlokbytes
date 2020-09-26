@@ -1,5 +1,6 @@
 #include <cstring>
 #include <fstream>
+#include <memory>
 
 #include "src/Environment.hpp"
 
@@ -30,7 +31,7 @@ int main(const int argc, const char** argv) {
     }
 
     const std::map<byte, Instruction> ops = Hardcoded::ops;
-    Environment* env = new Environment {code, ops, 16};
+    std::unique_ptr<Environment> env = std::make_unique<Environment>(code, ops);
 
     while(env->IsRunning()) {
         env->Step();
